@@ -1,24 +1,40 @@
 using Microsoft.AspNetCore.Mvc;
 using Bakery.Models;
-
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace Bakery.Controllers
 {
     public class HomeController : Controller
     {
+      private readonly BakeryContext _db;
+      private readonly UserManager<ApplicationUser> _userManager;
 
-    private readonly BakeryContext _db;
-
-    public HomeController(BakeryContext db)
-    {
-      _db = db;
-    }
-     [HttpGet("/")]
-      public ActionResult Index()
+      public HomeController(UserManager<ApplicationUser> userManager, BakeryContext db)
       {
-        ViewBag.Treat = new List<Treat>(_db.Treats);
-        ViewBag.Flavors = new List<Flavor>(_db.Flavors);
-        return View(ViewBag.Treat);
+        _userManager = userManager;
+        _db = db;
+      }
+
+      [HttpGet("/")]
+      public async Task<ActionResult> Index()
+      {
+        Flavor[] flavors = _db.Flavors.ToArray();
+        Dictionary<string,object[]> model = new Dictionary<string, object[]>();
+        model.Add("flavors", flavors);
+        string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        if (currentUser != null)
+        {
+          Treat[] treats = _db.Treats
+                      .Where(entry => entry.User.Id == currentUser.Id)
+                      .ToArray();
+          model.Add("treats", treats);
+        }
+        return View(model);
       }
     }
 }

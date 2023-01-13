@@ -1,37 +1,49 @@
 @{
-    Layout = "_Layout";
+  Layout = "_Layout";
 }
 
-@using Bakery.Models;
+@using Bakery.Models
 
-<h1 class="jumbotron"><u>Welcome to Pierres's Sweet Treats</u></h1><br>
+<h1>Welcome to PierresSweets</h1>
 
-<h2 class="alink">@Html.ActionLink("Treats", "index", "Treats")
-    || @Html.ActionLink("Add New Treat:", "Create", "Treats")</h2>
 
-    @if (@Model.Count == 0)
-    {
-        <h2>No Sweet Treats have been added yet!</h2>
-    }
-
+<hr>
+<div class="row" style="padding-top: 20px;">
+<div class="col-6">
+<h4>Flavors</h4>
+@if (Model["flavors"].Length == 0)
+{
+  <p>No flavor have been added yet!</p>
+} 
+<ul>
+  @foreach (Flavor flavor in Model["flavors"])
+  {
+    <li style="list-style-position: inside; padding-right: 45px;">@Html.ActionLink(@flavor.Name, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
+  }
+</ul>
+</div>
+<div class="col-6">
+@if (User.Identity.IsAuthenticated)
+{
+  <h4>Treats for @User.Identity.Name</h4>
+  @if (Model["treats"].Length == 0)
+  {
+    <p>No Treats have been added yet!</p>
+  } 
   <ul>
-      @foreach(Treat treat in ViewBag.Treat)
-      {
-        <p>@Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId })</p>
-      }
-    </ul>  
+    @foreach (Treat treat in Model["treats"])
+    {
+      <li style="list-style-position: inside;">@Html.ActionLink(@treat.Name, "Details", "VideoGames", new { id = @treat.TreatId})</li>
+    }
+  </ul>
+}
 
-
-    <h2 class="alink">@Html.ActionLink("Flavors", "Index", "Flavors")
-         || @Html.ActionLink("Add New Flavors:", "Create", "Flavors")</h2>
-
-         @if (@Model.Count == 0)
-         {
-            <h2>No Flavors have been added yet!</h2>
-         }
-           <ul>
-      @foreach (Flavor flavor in ViewBag.Flavors)
-      {
-        <p>@Html.ActionLink($"{flavor.Name}", "Details", "Flavors", new { id = flavor.FlavorId })</p>
-      } 
-    </ul> 
+else
+{
+  <h4>Treats</h4>
+  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your Tasty Treats.</p>
+}
+</div>
+</div>
+<p>@Html.ActionLink("Log out", "Index", "Account")</p>
+<hr>
