@@ -1,0 +1,20 @@
+@{
+    Layout = "_Layout";
+}
+
+@model Bakery.Models.Flavor
+
+<h1 class="jumbotron"><u>Add new Flavor!</u></h1><br>
+
+<p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+
+    <input type="submit" value="Add new Flavor" class="btn btn-danger">
+
+}
