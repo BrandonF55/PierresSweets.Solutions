@@ -1,10 +1,10 @@
-# Project NAme
+# PierresSweets
 
 #### Description
 
 ## Contributors
 
-* Chris Loveless
+* Brandon James Fenk
 
 ## Description
 <!-- This project is a simple web application for a business to keep track of Stylists and their Clients. Stylists and Clients have a one to many relationship meaning each Client only belongs to one Stylist. A Stylist can have many clients. The application allows the user to create, update, delete, and view lists of the Stylists they employ and their corresponding clients. The app also includes fields for notes about the clients. -->
@@ -44,8 +44,8 @@
 ## Known Bugs
 
 <!-- * _On the client details page, the appointment link should route to appointment details instead it is routed back to client details_ -->
-* If any bugs are found please email a brief description to: ```chriskloveless@gmail.com```
+* If any bugs are found please email a brief description to: ```brandon.fenk99@gmail.com```
 
 ## License
-Copyright (c) 2022 Chris Loveless
+Copyright (c) 2022 Brandon James Fenk
 _[MIT](https://choosealicense.com/licenses/mit/)_

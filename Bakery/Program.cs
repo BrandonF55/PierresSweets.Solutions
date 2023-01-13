@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectName.Models;
+using Bakery.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace ProjectName
+namespace Bakery
 {
   class Program
   {
@@ -15,7 +15,7 @@ namespace ProjectName
 
       builder.Services.AddControllersWithViews();
 
-      builder.Services.AddDbContext<ProjectNameContext>(
+      builder.Services.AddDbContext<BakeryContext>(
                         dbContextOptions => dbContextOptions
                           .UseMySql(
                             builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
@@ -23,18 +23,18 @@ namespace ProjectName
                         )
                       );
 
-      builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ProjectNameContext>().AddDefaultTokenProviders();
+      builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BakeryContext>().AddDefaultTokenProviders();
 
         //settings for development environment-----------------------------------------------vv
-      builder.Services.Configure<IdentityOptions>(options =>
-      {
-        options.Password.RequireDigit = false;
-        options.Password.RequireLowercase = false;
-        options.Password.RequireNonAlphanumeric = false;
-        options.Password.RequireUppercase = false;
-        options.Password.RequiredLength = 0;
-        options.Password.RequiredUniqueChars = 0;
-      });
+      // builder.Services.Configure<IdentityOptions>(options =>
+      // {
+      //   options.Password.RequireDigit = false;
+      //   options.Password.RequireLowercase = false;
+      //   options.Password.RequireNonAlphanumeric = false;
+      //   options.Password.RequireUppercase = false;
+      //   options.Password.RequiredLength = 0;
+      //   options.Password.RequiredUniqueChars = 0;
+      // });
 
       WebApplication app = builder.Build();
 
