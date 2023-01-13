@@ -27,7 +27,7 @@ List<FlavorTreat> TreatList = new List<FlavorTreat>();
     <ul class="row">
     @foreach (FlavorTreat join in sortedList)
         {
-            <li id="machine">machine: @join.Treat.Name | @join.Treat.Name</li>
+            <li id="treat">Treats: @join.Treat.Name | @join.Treat.Name</li>
             @using (Html.BeginForm("Delete", "Flavors"))
             {
                 @Html.Hidden("joinId", @join.FlavorTreatId)
