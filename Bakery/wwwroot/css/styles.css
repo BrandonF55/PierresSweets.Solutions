@@ -1,6 +1,28 @@
 body{
   text-align: center;
-  background-color: rgb(249, 250, 241);
+  background-color: #783937FF;
+}
+
+h2{
+  text-align: center;
+}
+
+hr {
+  border-color: white;
+}
+
+
+p{
+  text-align: center;
+}
+
+#h1{
+ color:  #783937FF ;
+ font-weight: 200;
+}
+
+u{
+  color: #783937FF ;
 }
 
 div#footer {
@@ -9,15 +31,18 @@ div#footer {
   left: 0px;
   width: 100%;
   color: #CCC;
-  background: #333;
+  background: #783937FF;
   padding: 10px;
   margin: auto;
+
 }
 
 p#foot {
   padding: 5px;
   margin-right: 20px;
   margin-left: 20px;
+  text-align: center;
+
 }
 
 .grow{
@@ -41,6 +66,17 @@ li{
   font-size: 1.3rem;
 }
 
+.jumbotron {
+  text-align: center;
+  padding: 50px;
+  background: rgb(10, 7, 7);
+  color: white;
+  font-family: 'Lobster', cursive;
+font-family: 'Roboto', sans-serif;
+font-size: 2.625rem;
+font-weight: 500;
+}
+
 a{
   color: black;
   font-weight: 350;
@@ -50,4 +86,8 @@ a:hover{
   color: black;
   font-weight: 350;
   text-decoration: none;
+}
+
+div.row{
+  color: #F1AC88FF;
 }

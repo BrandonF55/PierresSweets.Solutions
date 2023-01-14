@@ -1,4 +1,4 @@
-# PierresSweets
+# Pierre's Sweets
 
 #### Description
 
@@ -18,16 +18,18 @@
 * _MySQL_
 * _MVC_
 * _Entity Framework Core_
+* _Identity_
+
 
 ## Setup/Installation Requirements
 
 * Install MySQL Community Server and MySQL Workbench. Follow the instructions _[here](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql/)_.
 * Clone down the git repo ```https://github.com/BrandonF55/PierresSweets.Solutions.git``` to the ```desktop``` directory
 * Open the project with VSCode or a different source code editor.
-* Restore required packages: change directory to ```Factory``` To use a tool called dontet-ef run ```$ dotnet tool install --global dotnet-ef --version 6.0.0
-``` and in order to use dotnet-ef we also need to install ```$ dotnet add package Microsoft.EntityFrameworkCore.Design -v 6.0.0``` then restore with ```$ dotnet restore```
-* While in the ```Factory``` directory use ```$ dotnet build``` to build the program.
-* While in the ```Factory``` directory use ```$ dotnet watch run``` to run the program in the browser with a watcher.
+* Restore required packages: change directory to ```Bakery``` To use a tool called dontet-ef run ```$ dotnet tool install --global dotnet-ef --version 6.0.0
+``` and in order to use dotnet-ef we also need to install ```$ dotnet add package Microsoft.EntityFrameworkCore.Design -v 6.0.0``` then ```dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore -v 6.0.0``` for the log in and register side of the website. restore with ```$ dotnet restore```After restore do a database update with ```dotnet ef database update``` this will remake the database with the correct tables.
+* While in the ```Bakery``` directory use ```$ dotnet build``` to build the program.
+* While in the ```Bakery``` directory use ```$ dotnet watch run``` to run the program in the browser with a watcher.
 
 ## Database Setup
 

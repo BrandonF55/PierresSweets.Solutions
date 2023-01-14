@@ -2,18 +2,20 @@
   Layout = "_Layout";
 }
 
-<h2>Sign in / Sign out!</h2>
+<h2><u>Sign in / Sign out!</u></h2>
 <hr />
+<hr>
 @if (User.Identity.IsAuthenticated)
 {
-  <p>Hello @User.Identity.Name!</p>
+  <p>Hello: @User.Identity.Name!</p>
   @using (Html.BeginForm("LogOff", "Account"))
   {
-    <input type="submit" class="btn btn-primary" value="Log out" /><br>
+    <input type="submit" class="btn btn-dark" value="Log out" /><br>
   }
 }
 else
 {
-  <p>@Html.ActionLink("Register", "Register")</p>
-  <p>@Html.ActionLink("Log in", "Login")</p>
+  <p class="btn btn-dark">@Html.ActionLink("Register", "Register")</p><br>
+  <p class="btn btn-dark">@Html.ActionLink("Log in", "Login")</p>
 }
+<hr><hr>

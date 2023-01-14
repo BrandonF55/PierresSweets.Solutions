@@ -6,8 +6,9 @@
 
 @model RegisterViewModel
 
-<h2>Register a new user</h2>
+<h2><u>Register for a account</u></h2>
 <hr />
+<hr>
 
 @if (!ViewData.ModelState.IsValid)
 {
@@ -25,7 +26,7 @@
     @Html.LabelFor(user=> user.ConfirmPassword, new {style="padding-right: 20px;"})
     @Html.EditorFor(user=> user.ConfirmPassword)<br><br>
 
-    <input type="submit" value="Register" /><br><br>
+    <input class="btn btn-dark" type="submit" value="Register" /><br><br>
 }
 
-<p>@Html.ActionLink("Back to accounts page", "Index")</p>
+<p class="btn btn-dark">@Html.ActionLink("Back to accounts page", "Index")</p>

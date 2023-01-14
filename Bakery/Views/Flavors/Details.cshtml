@@ -2,7 +2,8 @@
   Layout = "_Layout";
 }
 
-<h1>Flavor Details</h1>
+<h1><u>Flavor's Details</u></h1>
+<hr>
 <hr>
 
 @model Bakery.Models.Flavor
@@ -21,25 +22,26 @@ else if (@Model.JoinEntities.Count == 0)
   <p class="enlarge" style="margin-bottom: 4%;">@Html.ActionLink("Add Treat to Flavor", "AddTreat", new { id = Model.FlavorId})</p>
 }
 else{
-  <h3 style="margin-bottom: 2%;">Treats:</h3>
   <ul>
     @foreach(FlavorTreat join in Model.JoinEntities)
     {
       @using (Html.BeginForm("DeleteJoin", "Flavors"))
       {
       <li> 
-        @join.Treat.Name |
+        <h3 style="margin-right: 7%;">Treats: @join.Treat.Name </h3>
+        <hr>
+        <br>
         @Html.Hidden("joinId", @join.FlavorTreatId)
-        <input type="submit" value="Delete" class="btn btn-danger btn-md"/>
+        <input style="margin-right: 30px;" type="submit" value="Delete" class="btn btn-dark"/>
       </li>
       }
     }
   </ul>
-  <p class="enlarge" style="margin-bottom: 4%;">@Html.ActionLink("Add Treat to Flavor", "AddTreat", new { id = Model.FlavorId})</p>
+  <p class="btn btn-dark" style="margin-bottom: 4%;">@Html.ActionLink("Add Treat to this Flavor", "AddTreat", new { id = Model.FlavorId})</p>
 }
 <hr style="font-size: 10px;">
 
-<p class="enlarge">@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId})</p>
-<p class="enlarge">@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId})</p>
-<p class="enlarge">@Html.ActionLink("View Flavors", "Index")</p>
-<p class="enlarge">@Html.ActionLink("Main Menu", "Index", "Home")</p>
+<p class="btn btn-dark">@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId})</p>
+<p class="btn btn-dark">@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId})</p>
+<p class="btn btn-dark">@Html.ActionLink("View Flavors", "Index")</p>
+<p class="btn btn-dark">@Html.ActionLink("Main Menu", "Index", "Home")</p>

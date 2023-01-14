@@ -9,12 +9,16 @@
 <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
 
-
+<h3 style="margin-left: 40px;">Add New Flavor Here:</h3>
+<hr>
 @using (Html.BeginForm())
+
 {
     @Html.LabelFor(model => model.Name)
     @Html.TextBoxFor(model => model.Name)
-
-    <input type="submit" value="Add new Flavor" class="btn btn-danger">
+<br>
+<br>
+    <input type="submit" value="Add new Flavor" class="btn btn-dark">
+    
 
 }

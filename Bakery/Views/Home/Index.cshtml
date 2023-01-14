@@ -4,13 +4,16 @@
 
 @using Bakery.Models
 
-<h1>Welcome to PierresSweets</h1>
+<h1 class="jumbotron"><u>Welcome to Pierre's Sweets</u></h1>
 
 
 <hr>
+<hr>
+
+
 <div class="row" style="padding-top: 20px;">
 <div class="col-6">
-<h2>Flavors</h2>
+<h2><u>Flavor's:</u></h2>
 @if (Model["flavors"].Length == 0)
 {
   <p>No flavor have been added yet!</p>
@@ -24,7 +27,7 @@
 </div>
 <div class="col-6">
 
-  <h2>Treats</h2>
+  <h2><u>Treats's:</u></h2>
   @if (Model["treats"].Length == 0)
   {
     <p>No Treats have been added yet!</p>
@@ -38,4 +41,5 @@
 </div>
 </div>
 <p class="grow">@Html.ActionLink("Log out", "Index", "Account")</p>
+<hr>
 <hr>
