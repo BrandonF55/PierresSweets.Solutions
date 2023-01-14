@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bakery.Migrations
 {
-    public partial class AddedEntitys : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,6 +64,36 @@ namespace Bakery.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Flavors",
+                columns: table => new
+                {
+                    FlavorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Flavors", x => x.FlavorId);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Treats",
+                columns: table => new
+                {
+                    TreatId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Treats", x => x.TreatId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -195,52 +225,7 @@ namespace Bakery.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Flavors",
-                columns: table => new
-                {
-                    FlavorId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    UserId = table.Column<string>(type: "varchar(255)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Flavors", x => x.FlavorId);
-                    table.ForeignKey(
-                        name: "FK_Flavors_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Treats",
-                columns: table => new
-                {
-                    TreatId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Calories = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "varchar(255)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Treats", x => x.TreatId);
-                    table.ForeignKey(
-                        name: "FK_Treats_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "FlavorTreat",
+                name: "FlavorTreats",
                 columns: table => new
                 {
                     FlavorTreatId = table.Column<int>(type: "int", nullable: false)
@@ -250,15 +235,15 @@ namespace Bakery.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FlavorTreat", x => x.FlavorTreatId);
+                    table.PrimaryKey("PK_FlavorTreats", x => x.FlavorTreatId);
                     table.ForeignKey(
-                        name: "FK_FlavorTreat_Flavors_FlavorId",
+                        name: "FK_FlavorTreats_Flavors_FlavorId",
                         column: x => x.FlavorId,
                         principalTable: "Flavors",
                         principalColumn: "FlavorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FlavorTreat_Treats_TreatId",
+                        name: "FK_FlavorTreats_Treats_TreatId",
                         column: x => x.TreatId,
                         principalTable: "Treats",
                         principalColumn: "TreatId",
@@ -304,24 +289,14 @@ namespace Bakery.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Flavors_UserId",
-                table: "Flavors",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FlavorTreat_FlavorId",
-                table: "FlavorTreat",
+                name: "IX_FlavorTreats_FlavorId",
+                table: "FlavorTreats",
                 column: "FlavorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FlavorTreat_TreatId",
-                table: "FlavorTreat",
+                name: "IX_FlavorTreats_TreatId",
+                table: "FlavorTreats",
                 column: "TreatId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Treats_UserId",
-                table: "Treats",
-                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -342,19 +317,19 @@ namespace Bakery.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "FlavorTreat");
+                name: "FlavorTreats");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Flavors");
 
             migrationBuilder.DropTable(
                 name: "Treats");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
         }
     }
 }

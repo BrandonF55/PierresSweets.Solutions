@@ -92,12 +92,7 @@ namespace Bakery.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
                     b.HasKey("FlavorId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Flavors");
                 });
@@ -120,7 +115,7 @@ namespace Bakery.Migrations
 
                     b.HasIndex("TreatId");
 
-                    b.ToTable("FlavorTreat");
+                    b.ToTable("FlavorTreats");
                 });
 
             modelBuilder.Entity("Bakery.Models.Treat", b =>
@@ -129,20 +124,10 @@ namespace Bakery.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("FlavorId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
                     b.HasKey("TreatId");
-
-                    b.HasIndex("FlavorId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Treats");
                 });
@@ -275,15 +260,6 @@ namespace Bakery.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Bakery.Models.Flavor", b =>
-                {
-                    b.HasOne("Bakery.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Bakery.Models.FlavorTreat", b =>
                 {
                     b.HasOne("Bakery.Models.Flavor", "Flavor")
@@ -301,23 +277,6 @@ namespace Bakery.Migrations
                     b.Navigation("Flavor");
 
                     b.Navigation("Treat");
-                });
-
-            modelBuilder.Entity("Bakery.Models.Treat", b =>
-                {
-                    b.HasOne("Bakery.Models.Flavor", "Flavor")
-                        .WithMany("Treats")
-                        .HasForeignKey("FlavorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Bakery.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Flavor");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -374,8 +333,6 @@ namespace Bakery.Migrations
             modelBuilder.Entity("Bakery.Models.Flavor", b =>
                 {
                     b.Navigation("JoinEntities");
-
-                    b.Navigation("Treats");
                 });
 
             modelBuilder.Entity("Bakery.Models.Treat", b =>

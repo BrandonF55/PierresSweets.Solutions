@@ -6,16 +6,12 @@
 
 <h1>Add new Sweet Treats</h1>
 
-<p>@Html.ValidationMessageFor(model => model.FlavorId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
-
-  @Html.LabelFor(model => model.Flavor)
-  @Html.DropDownList("FlavorId")
 
   <input type="submit" value="Add new Treat" class="btn btn-default" />
 }

@@ -1,22 +1,22 @@
 @{
   Layout = "_Layout";
 }
-@using Bakery.Models
+
 @model Bakery.Models.Flavor
 
-<h1 class="jumbotron"><u>Add a Treat!</u></h1 class="jumbotron">
+<h1 class="jumbotron"><u>Add a Treat!</u></h1>
 
-<h4>Add a Treat to this Flavor: @Html.DisplayFor(model => model.Name)</h4>
+<h2>Add a Treat to this Flavor: @Html.DisplayFor(model => model.Name)</h2>
 
 <hr>
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.FlavorId)
+  @Html.HiddenFor(model => model.FlavorId)
 
-    @Html.Label("Select Treat")
-    @Html.DropDownList("TreatId")<br>
+  <h3>@Html.Label("Select Treat") @Html.DropDownList("TreatId")</h3>
+  <br>
 
-    <input type="submit" value="Save" class="btn btn-dark"/>
+  <input type="submit" value="Save" class="btn btn-dark" />
 }
 <br>
 <p class="btn btn-dark">@Html.ActionLink("Back to list of Flavors", "Index")</p>

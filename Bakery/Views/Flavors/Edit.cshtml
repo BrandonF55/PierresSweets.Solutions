@@ -9,16 +9,13 @@
 
 <h3>Edit This Flavor: @Html.DisplayFor(model => model.Name)</h3>
 
-@using (Html.BeginForm())
+@using (@Html.BeginForm())
 {
   {
     @Html.HiddenFor(model => model.FlavorId)
 
     @Html.LabelFor(model => model.Name)
     @Html.EditorFor(model => model.Name)
-
-    @Html.Label("Select Flavor")
-    @Html.DropDownList("FlavorId")
 
     <input type="submit" value="Save" />
   }<br><br>

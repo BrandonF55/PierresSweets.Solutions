@@ -1,3 +1,8 @@
+body{
+  text-align: center;
+  background-color: rgb(249, 250, 241);
+}
+
 div#footer {
   position: fixed;
   bottom: 0px;
@@ -13,4 +18,36 @@ p#foot {
   padding: 5px;
   margin-right: 20px;
   margin-left: 20px;
+}
+
+.grow{
+  transition: transform .3s;
+  color: black;
+}
+
+.grow:hover{
+  transform: scale(1.1);
+  color: black;
+}
+
+ul{
+  list-style: none;
+}
+
+li{
+  list-style: none;
+  color: black;
+  font-weight: 350;
+  font-size: 1.3rem;
+}
+
+a{
+  color: black;
+  font-weight: 350;
+}
+
+a:hover{
+  color: black;
+  font-weight: 350;
+  text-decoration: none;
 }

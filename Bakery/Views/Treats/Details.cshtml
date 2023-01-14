@@ -2,35 +2,46 @@
   Layout = "_Layout";
 }
 
-@using Bakery.Models
+<h1>Treat Details</h1>
+<hr>
+
 @model Bakery.Models.Treat
+@using Bakery.Models
 
-<h2>Treat Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>  
-<h3>@Html.DisplayNameFor(model => model.Flavor): @Html.DisplayFor(model => model.Flavor.Name)</h3>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
-@if(@Model.JoinEntities.Count == 0)
+@if (@Model.JoinEntities.Count == 0 && @ViewBag.Flavors.Count == 0)
 {
-  <p>This Treat does not have any Flavors yet!</p>
+  <p>*No flavors are available*</p>
+  <p>Treat cannot be assiged a flavor until a flavor is added to flavor list</p>
+  <p>@Html.ActionLink("Add Flavor to Flavor List", "Create", "Flavors")</p>
 }
-else
-
+else if (@Model.JoinEntities.Count == 0)
 {
-  <h4>This Flavor has the following Treats:</h4>
-  <ul>
-    @foreach(FlavorTreat join in Model.JoinEntities)
+  <p class="text-danger">This treat has no flavors yet..</p>
+  <p class="enlarge" style="margin-bottom: 4%;">@Html.ActionLink("Add Flavor to Treat", "AddFlavor", new { id = Model.TreatId})</p>
+} 
+else
+{
+  <h3 style="margin-bottom: 2%;">Flavors:</h3>
+   <ul>
+    @foreach (FlavorTreat join in Model.JoinEntities)
     {
-      <li>Flavors: @join.Treat.Name</li>
       @using (Html.BeginForm("DeleteJoin", "Treats"))
       {
+       <li> 
+        @join.Flavor.Name |
         @Html.Hidden("joinId", @join.FlavorTreatId)
-        <input type="submit" value="Delete"/>
+        <input type="submit" value="Delete" class="btn btn-danger btn-md"/>
+      </li>
       }
     }
   </ul>
+<p>@Html.ActionLink("Add Flavor to Treat", "AddFlavor", new { id = Model.TreatId})</p>
 }
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Flavors or Treats", "Edit", new { id = Model.TreatId })</p>
-<p>@Html.ActionLink("Add a Flavor", "AddFlavor", new { id = Model.TreatId })</p>
-<p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
+<hr style="font-size: 10px;">
+
+<p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId})</p>
+<p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId})</p>
+<p>@Html.ActionLink("Back to Treats", "Index")</p>
+<p>@Html.ActionLink("Main Menu", "Index", "Home")</p>

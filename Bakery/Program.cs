@@ -25,7 +25,7 @@ namespace Bakery
 
       builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BakeryContext>().AddDefaultTokenProviders();
 
-        //settings for development environment-----------------------------------------------vv
+      //   settings for development environment-----------------------------------------------vv
       // builder.Services.Configure<IdentityOptions>(options =>
       // {
       //   options.Password.RequireDigit = false;
