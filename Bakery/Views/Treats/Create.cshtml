@@ -4,7 +4,7 @@
 
 @model Bakery.Models.Treat
 
-<h1>Add new Sweet Treats</h1>
+<h1 class="jumbotron"><u>Add new Sweet Treat</u></h1>
 
 <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
@@ -12,7 +12,9 @@
 {
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
-
-  <input type="submit" value="Add new Treat" class="btn btn-default" />
+  <br>
+  <br>
+  <input class="btn btn-dark" type="submit" value="Add new Treat"  />
 }
-<p>@Html.ActionLink("Show all Treats", "Index")</p>
+<br>
+<p class="btn btn-dark">@Html.ActionLink("Show all Treats", "Index")</p>

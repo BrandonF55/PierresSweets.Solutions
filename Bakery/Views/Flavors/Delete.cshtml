@@ -3,7 +3,7 @@
 }
 @model Bakery.Models.Flavor;
 
-<h1 class="jumbotron"><u>Are you postive you want to delete this?</u></h1>
+<h1 class="jumbotron"><u>Are you postive you want to delete this Flavor?</u></h1>
 
 @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
 @using (Html.BeginForm())
@@ -11,4 +11,4 @@
     <input type="submit" value="Delete" class="btn btn-dark" />
 }
 <br>
-<p class="btn btn-dark">@Html.ActionLink("Back to List", "Index")</p>
+<p class="btn btn-dark">@Html.ActionLink("Back to List of Flavors", "Index")</p>

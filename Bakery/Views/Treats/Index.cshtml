@@ -4,7 +4,10 @@
 
 @using Bakery.Models;
 
-<h1>Treats for: <br> @User.Identity.Name</h1>
+<h1>Sweet Treat's for:</h1>
+
+<h3>@User.Identity.Name</h3>
+
 <hr>
 <hr>
 
@@ -17,11 +20,11 @@ else
   <ul>
     @foreach (Treat treat in Model)
     {
-      <li class="btn btn-dark">@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId }) </li>
+      <li class="grow">@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId }) </li>
     }
   </ul>
   <hr>
   <hr>
 }
 
-<p class="btn btn-dark">@Html.ActionLink("Add Treats", "Create", "Treats")</p>
+<p style="margin-left: 40px;" class="btn btn-dark">@Html.ActionLink("Add Treats", "Create", "Treats")</p>

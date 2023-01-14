@@ -6,15 +6,19 @@
 
 <h1 class="jumbotron"><u>Add a Treat!</u></h1>
 
-<h2>Add a Treat to this Flavor: @Html.DisplayFor(model => model.Name)</h2>
+<h2>Add a Sweet Treat to this Flavor</h2>
+<h3>@Html.DisplayFor(model => model.Name)</h3>
 
+<hr>
 <hr>
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.FlavorId)
 
-  <h3>@Html.Label("Select Treat") @Html.DropDownList("TreatId")</h3>
-  <br>
+  <h3>@Html.Label("Select Treat")</h3>
+  <p>@Html.DropDownList("TreatId")</p>
+  <hr>
+  <hr>
 
   <input type="submit" value="Save" class="btn btn-dark" />
 }

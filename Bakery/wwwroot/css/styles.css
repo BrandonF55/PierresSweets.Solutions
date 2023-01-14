@@ -1,10 +1,18 @@
 body{
   text-align: center;
   background-color: #783937FF;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: black 3px 2px;
+}
+input{
+  font-family: 'Raleway', sans-serif;
+  text-shadow: black 3px 2px;
+
 }
 
 h2{
   text-align: center;
+  font-family: 'Raleway', sans-serif;
 }
 
 hr {
@@ -19,10 +27,11 @@ p{
 #h1{
  color:  #783937FF ;
  font-weight: 200;
+ font-family: 'Raleway', sans-serif;
 }
 
 u{
-  color: #783937FF ;
+  color:  #F1AC88FF ;
 }
 
 div#footer {
@@ -34,6 +43,7 @@ div#footer {
   background: #783937FF;
   padding: 10px;
   margin: auto;
+  font-family: 'Raleway', sans-serif;
 
 }
 
@@ -42,12 +52,19 @@ p#foot {
   margin-right: 20px;
   margin-left: 20px;
   text-align: center;
+  font-family: 'Raleway', sans-serif;
 
 }
+
+.head{
+  margin-left: 50px;
+}
+
 
 .grow{
   transition: transform .3s;
   color: black;
+  font-family: 'Raleway', sans-serif;
 }
 
 .grow:hover{
@@ -56,23 +73,28 @@ p#foot {
 }
 
 ul{
-  list-style: none;
+  /* list-style-type: none; */
+  list-style-position: inside;
+  list-style-image: url("https://img.icons8.com/external-flaticons-lineal-color-flat-icons/36/external-bakery-bakery-flaticons-lineal-color-flat-icons-6.png")
+  
 }
 
 li{
-  list-style: none;
+  /* list-style: none; */
   color: black;
   font-weight: 350;
   font-size: 1.3rem;
+  font-family: 'Raleway', sans-serif;
+  list-style-position: inside;
+  list-style-image: url("https://img.icons8.com/external-flaticons-lineal-color-flat-icons/36/external-bakery-bakery-flaticons-lineal-color-flat-icons-6.png")
 }
 
 .jumbotron {
-  text-align: center;
-  padding: 50px;
-  background: rgb(10, 7, 7);
-  color: white;
-  font-family: 'Lobster', cursive;
-font-family: 'Roboto', sans-serif;
+text-align: center;
+padding: 50px;
+background: rgb(10, 7, 7);
+color: white;
+font-family: 'Raleway', sans-serif;
 font-size: 2.625rem;
 font-weight: 500;
 }

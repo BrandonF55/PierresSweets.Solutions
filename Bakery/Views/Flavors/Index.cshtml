@@ -15,11 +15,11 @@ else
     <ul>
         @foreach (Flavor flavor in Model)
         {
-            <li class="flavor">@Html.ActionLink($"{flavor.Name}", "Details", new { id = flavor.FlavorId})</li>
+            <li class="grow">@Html.ActionLink($"{flavor.Name}", "Details", new { id = flavor.FlavorId})</li>
         }
 
     </ul>
 }
 
-     <p class="btn btn-dark" id="link">@Html.ActionLink("Add new Flavors", "Create")</p><br>
+     <p style="margin-left: 45px;" class="btn btn-dark" id="link">@Html.ActionLink("Add new Flavors", "Create")</p><br>
    
