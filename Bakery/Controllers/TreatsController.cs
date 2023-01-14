@@ -36,7 +36,7 @@ namespace Bakery.Controllers
 
     public ActionResult Create()
     {
-       ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
+      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
       return View();
     }
 
@@ -61,15 +61,15 @@ namespace Bakery.Controllers
 
     public ActionResult Details(int id)
     {
-       Treat thisTreat = _db.Treats
-          .Include(treat => treat.Flavor)
-          .Include(treat => treat.JoinEntities)
-          .FirstOrDefault(treat => treat.TreatId == id);
+      Treat thisTreat = _db.Treats
+         .Include(treat => treat.Flavor)
+         .Include(treat => treat.JoinEntities)
+         .FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
 
 
-        public ActionResult Edit(int id)
+    public ActionResult Edit(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
@@ -85,7 +85,7 @@ namespace Bakery.Controllers
     }
 
 
-      public ActionResult AddFlavor(int id)
+    public ActionResult AddFlavor(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       ViewBag.FlavorId = new SelectList(_db.Flavors, "FLavorId", "Name");
@@ -93,33 +93,18 @@ namespace Bakery.Controllers
     }
 
     [HttpPost]
-    public ActionResult AddFlavor(Treat treat, int flavorId)
+    public ActionResult AddFlavor(Treat treat, int FlavorId)
     {
-      #nullable enable
-      FlavorTreat? joinEntity = _db.FlavorTreat.FirstOrDefault(join => (join.FlavorId == flavorId && join.TreatId == treat.TreatId));
-      #nullable disable
-      if (joinEntity == null && flavorId != 0)
+#nullable enable
+      FlavorTreat? joinEntity = _db.FlavorTreat.FirstOrDefault(join => (join.FlavorId == FlavorId && join.TreatId == treat.TreatId));
+#nullable disable
+      if (joinEntity == null && FlavorId != 0)
       {
-        _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = flavorId, TreatId = treat.TreatId });
+        _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = treat.TreatId });
-    }  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
     public ActionResult Delete(int id)
     {
@@ -135,14 +120,5 @@ namespace Bakery.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
-
-
-
-
-
-
-
-
   }
 }

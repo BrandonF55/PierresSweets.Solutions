@@ -7,7 +7,6 @@ namespace Bakery.Models
   {
     public int TreatId { get; set; }
     public string Name { get; set; }
-    public int Calories { get; set; }
     public int FlavorId { get; set; }
     public Flavor Flavor { get; set; }
     public ApplicationUser User { get; set; }
